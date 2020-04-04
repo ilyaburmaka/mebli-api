@@ -6,11 +6,10 @@ import {
   Param,
   Delete,
   Patch,
-  Query,
-  UsePipes,
-  ValidationPipe,
+  Query, UsePipes, ValidationPipe,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
+import { TaskStatus } from './task-status.enum';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { TaskStatusValidationPipe } from './pipes/task-status-validation.pipe';

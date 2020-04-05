@@ -1,4 +1,10 @@
 server:
   origin: 'https://fasad.now.sh'
 db:
-  synchronize: false
+  host: 'localhost'
+  username: 'postgres'
+  password: 'postgres'
+  synchronize: true
+
+jwt:
+  secret: 'pa11MebliJ'

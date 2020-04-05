@@ -10,7 +10,7 @@
     "build": "npm run clean && tsc",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:dist": "nodemon --config nodemon.json node dist/src/main.js " ,
+    "start:dist": "NODE_ENV=production nodemon --config nodemon.json node dist/src/main.js " ,
     "start:dev": "NODE_ENV=development nodemon --config nodemon.json",
     "start:debug": "nest start --debug --watch",
     "start:prod": "NODE_ENV=production nodemon --config nodemon.json node dist/src/main.js",

@@ -1,7 +1,8 @@
-import { BaseEntity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { MaxLength } from 'class-validator';
 
-export class ProductEntity extends BaseEntity {
+@Entity()
+export class Product extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

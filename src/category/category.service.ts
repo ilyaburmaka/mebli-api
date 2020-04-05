@@ -12,10 +12,10 @@ export class CategoryService {
   ) {}
 
   async getCategories(): Promise<Category[]> {
-    return this.categoryRepository.getCategories();
+    return await this.categoryRepository.getCategories();
   }
 
   async categoryCreate(categoryValues: CreateCategoryDto): Promise<Category> {
-    return this.categoryRepository.createCategory(categoryValues);
+    return await this.categoryRepository.createCategory(categoryValues);
   }
 }

@@ -1,15 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CategoryRepository } from '../category/category.repository';
 import { AuthorizationModule } from '../authorization/authorization.module';
 import { ProductController } from './product.controller';
 import { ProductService } from './product.service';
+import { ProductRepository } from './product.repository';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([CategoryRepository]),
-    AuthorizationModule,
-  ],
+  imports: [TypeOrmModule.forFeature([ProductRepository]), AuthorizationModule],
   controllers: [ProductController],
   providers: [ProductService],
 })

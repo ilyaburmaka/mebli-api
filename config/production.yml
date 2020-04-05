@@ -1,10 +1,13 @@
 server:
   origin: 'https://fasad.now.sh'
 db:
-  host: 'localhost'
-  username: 'postgres'
-  password: 'postgres'
-  synchronize: true
+  type: 'postgres'
+  port: 5432
+  host: 'ec2-52-200-119-0.compute-1.amazonaws.com'
+  username: 'jagyfiaqolcfem'
+  password: 'aa763771e0eda98d95f196483d501cefea39e48d82067319a150bec042a8dd53'
+  synchronize: false
+  database: 'dd55kr879q9jdr'
 
 jwt:
   secret: 'pa11MebliJ'

@@ -1,0 +1,4 @@
+server:
+  origin: 'https://fasad.now.sh'
+db:
+  synchronize: false

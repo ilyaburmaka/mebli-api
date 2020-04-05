@@ -14,7 +14,7 @@ export class AuthorizationController {
     await this.authorizationService.signUp(authorizationCredentialsDto);
   }
 
-  @Post('/signip')
+  @Post('/signin')
   async singIp(
     @Body(ValidationPipe)
     authorizationCredentialsDto: AuthorizationCredentialsDto,

@@ -6,6 +6,7 @@ import { AuthorizationModule } from './authorization/authorization.module';
 import { ProductModule } from './product/product.module';
 import { CategoryModule } from './category/category.module';
 import { FeedbackModule } from './feedback/feedback.module';
+import { SubcategoryModule } from './subcategory/subcategory.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { FeedbackModule } from './feedback/feedback.module';
     ProductModule,
     CategoryModule,
     FeedbackModule,
+    SubcategoryModule,
   ],
 })
 export class AppModule {}

@@ -2,6 +2,8 @@ import {
   Body,
   Controller,
   Get,
+  Param,
+  ParseIntPipe,
   Post,
   UsePipes,
   ValidationPipe,
@@ -17,6 +19,11 @@ export class CategoryController {
   @Get()
   getCategories(): Promise<Category[]> {
     return this.categoryService.getCategories();
+  }
+
+  @Get('/:id')
+  getCategory(@Param('id', ParseIntPipe) id: number): Promise<Category> {
+    return this.categoryService.getCategory(id);
   }
 
   @Post()

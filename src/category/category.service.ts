@@ -15,6 +15,10 @@ export class CategoryService {
     return await this.categoryRepository.getCategories();
   }
 
+  async getCategory(id: number): Promise<Category> {
+    return await this.categoryRepository.findOne();
+  }
+
   async categoryCreate(categoryValues: CreateCategoryDto): Promise<Category> {
     return await this.categoryRepository.createCategory(categoryValues);
   }

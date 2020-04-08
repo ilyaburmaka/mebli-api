@@ -4,8 +4,10 @@ import {
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
+  ManyToMany,
 } from 'typeorm';
 import { Category } from '../category/category.entity';
+import { Product } from '../product/product.entity';
 
 @Entity()
 export class SubCategory extends BaseEntity {
@@ -24,4 +26,11 @@ export class SubCategory extends BaseEntity {
     { eager: false },
   )
   category: Category;
+
+  @ManyToMany(
+    type => Product,
+    product => product.subcategories,
+    { eager: false },
+  )
+  products: Product[];
 }

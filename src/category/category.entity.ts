@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { CategoryTypeEnum } from './category.type.enum';
 import { SubCategory } from '../subcategory/sub.entity';
+import { Product } from '../product/product.entity';
 
 @Entity()
 export class Category extends BaseEntity {
@@ -25,4 +26,11 @@ export class Category extends BaseEntity {
     { eager: true },
   )
   subcategory: SubCategory[];
+
+  @OneToMany(
+    type => Product,
+    product => product.category,
+    { eager: true },
+  )
+  products: Product[];
 }

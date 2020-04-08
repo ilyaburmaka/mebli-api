@@ -1,5 +1,16 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  ManyToMany,
+} from 'typeorm';
 import { MaxLength } from 'class-validator';
+import { User } from '../authorization/user.entity';
+import { SubCategory } from '../subcategory/sub.entity';
+import { Category } from '../category/category.entity';
 
 @Entity()
 export class Product extends BaseEntity {
@@ -15,4 +26,18 @@ export class Product extends BaseEntity {
 
   @Column()
   description: string;
+
+  @ManyToMany(
+    type => SubCategory,
+    subcategory => subcategory.products,
+    { eager: false },
+  )
+  subcategories: SubCategory[];
+
+  @OneToMany(
+    type => Category,
+    category => category.products,
+    { eager: false },
+  )
+  category: Category;
 }

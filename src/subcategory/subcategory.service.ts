@@ -33,6 +33,12 @@ export class SubcategoryService {
     const category = await this.categoryRepository.findOne(
       subCategoryValues.categoryId,
     );
+    if (!category) {
+      throw new NotFoundException(
+        `Category with ID ${subCategoryValues.categoryId} not found`,
+      );
+    }
+
     return await this.subRepository.createSubCategory(
       subCategoryValues,
       category,

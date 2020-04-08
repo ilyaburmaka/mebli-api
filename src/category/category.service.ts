@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CategoryRepository } from './category.repository';
 import { Category } from './category.entity';
@@ -16,10 +16,42 @@ export class CategoryService {
   }
 
   async getCategory(id: number): Promise<Category> {
-    return await this.categoryRepository.findOne();
+    const found = await this.categoryRepository.findOne(id);
+
+    if (!found) {
+      throw new NotFoundException(`Task with ID ${id} not found`);
+    }
+
+    return found;
   }
 
   async categoryCreate(categoryValues: CreateCategoryDto): Promise<Category> {
     return await this.categoryRepository.createCategory(categoryValues);
+  }
+
+  async categoryUpdate(
+    categoryValues: CreateCategoryDto,
+    id: number,
+  ): Promise<Category> {
+    const category = await this.getCategory(id);
+
+    return await this.categoryRepository.updateCategory(
+      categoryValues,
+      category,
+    );
+  }
+
+  async categoryDelete(id: number): Promise<boolean> {
+    const result = await this.categoryRepository.delete({
+      id,
+    });
+
+    if (!result.affected) {
+      throw new NotFoundException(`Task with ID ${id} not found`);
+    }
+
+    if (!!result.affected) {
+      return true;
+    }
   }
 }

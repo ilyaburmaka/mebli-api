@@ -24,4 +24,26 @@ export class CategoryRepository extends Repository<Category> {
       throw new InternalServerErrorException();
     }
   }
+
+  async updateCategory(
+    categoryValues: CreateCategoryDto,
+    category: Category,
+  ): Promise<Category> {
+    const { name, type } = categoryValues;
+
+    if (category.name !== name) {
+      category.name = name;
+    }
+
+    if (category.type !== type) {
+      category.type = type;
+    }
+
+    try {
+      await category.save();
+      return category;
+    } catch (e) {
+      throw new InternalServerErrorException();
+    }
+  }
 }

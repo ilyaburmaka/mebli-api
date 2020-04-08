@@ -7,6 +7,7 @@ import {
   Post,
   UsePipes,
   ValidationPipe,
+  Delete,
 } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { Category } from './category.entity';
@@ -30,5 +31,19 @@ export class CategoryController {
   @UsePipes(ValidationPipe)
   createCategory(@Body() categoryValues: CreateCategoryDto): Promise<Category> {
     return this.categoryService.categoryCreate(categoryValues);
+  }
+
+  @Post('/update/:id')
+  @UsePipes(ValidationPipe)
+  updateCategory(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() categoryValues: CreateCategoryDto,
+  ): Promise<Category> {
+    return this.categoryService.categoryUpdate(categoryValues, id);
+  }
+
+  @Delete('/:id')
+  categoryDelete(@Param('id', ParseIntPipe) id: number): Promise<boolean> {
+    return this.categoryService.categoryDelete(id);
   }
 }

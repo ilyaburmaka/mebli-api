@@ -10,7 +10,6 @@ export class CategoryRepository extends Repository<Category> {
 
     return await query.getMany();
   }
-
   async createCategory(categoryValues: CreateCategoryDto): Promise<Category> {
     const category = new Category();
 

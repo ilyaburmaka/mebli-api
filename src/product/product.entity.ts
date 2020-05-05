@@ -59,10 +59,4 @@ export class Product extends BaseEntity {
   )
   photos: Asset[];
 
-  // @OneToMany(
-  //   type => Category,
-  //   category => category.products,
-  //   { eager: false },
-  // )
-  // category: Category;
 }

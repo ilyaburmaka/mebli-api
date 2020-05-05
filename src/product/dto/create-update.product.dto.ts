@@ -1,19 +1,15 @@
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CreateUpdateProductDto {
-  @IsNotEmpty()
-  @IsString()
   name: string;
-
-  @IsNotEmpty()
-  @IsString()
+  nameRu: string;
+  nameEn: string;
   materials: string;
-
-  @IsNotEmpty()
-  @IsString()
+  materialsRus: string;
+  materialsEng: string;
   description: string;
-
-  @IsNotEmpty()
-  @IsNumber()
+  descriptionRus: string;
+  descriptionEng: string;
   categoryId: number;
+  assetIds: any[];
 }

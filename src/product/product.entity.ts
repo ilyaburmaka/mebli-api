@@ -11,6 +11,7 @@ import { MaxLength } from 'class-validator';
 import { User } from '../authorization/user.entity';
 import { SubCategory } from '../subcategory/sub.entity';
 import { Category } from '../category/category.entity';
+import { Asset } from '../assets/asset.entity';
 
 @Entity()
 export class Product extends BaseEntity {
@@ -20,12 +21,29 @@ export class Product extends BaseEntity {
   @Column()
   name: string;
 
-  @Column()
-  @MaxLength(50)
+  @Column({ name: 'name_rus' })
+  nameRu: string;
+
+  @Column({ name: 'name_eng' })
+  nameEn: string;
+
+  @Column({ name: 'materials_ua' })
   materials: string;
 
-  @Column()
+  @Column({ name: 'materials_rus' })
+  materialsRus: string;
+
+  @Column({ name: 'materials_eng' })
+  materialsEng: string;
+
+  @Column({ name: 'description_ua' })
   description: string;
+
+  @Column({ name: 'description_rus' })
+  descriptionRus: string;
+
+  @Column({ name: 'description_eng' })
+  descriptionEng: string;
 
   @ManyToMany(
     type => SubCategory,
@@ -35,9 +53,16 @@ export class Product extends BaseEntity {
   subcategories: SubCategory[];
 
   @OneToMany(
-    type => Category,
-    category => category.products,
+    type => Asset,
+    asset => asset.product,
     { eager: false },
   )
-  category: Category;
+  photos: Asset[];
+
+  // @OneToMany(
+  //   type => Category,
+  //   category => category.products,
+  //   { eager: false },
+  // )
+  // category: Category;
 }

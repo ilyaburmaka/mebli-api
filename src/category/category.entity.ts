@@ -14,8 +14,14 @@ export class Category extends BaseEntity {
   @PrimaryGeneratedColumn()
   public id: number;
 
-  @Column()
+  @Column({ name: 'name_ua', nullable: true })
   name: string;
+
+  @Column({ name: 'name_rus', nullable: true })
+  nameRu: string;
+
+  @Column({ name: 'name_eng', nullable: true })
+  nameEn: string;
 
   @Column()
   type: CategoryTypeEnum;
@@ -23,14 +29,16 @@ export class Category extends BaseEntity {
   @OneToMany(
     type => SubCategory,
     sub => sub.category,
-    { eager: true },
+    { eager: true, onDelete: 'CASCADE', onUpdate: 'CASCADE' },
   )
   subcategory: SubCategory[];
 
-  @OneToMany(
-    type => Product,
-    product => product.category,
-    { eager: true },
-  )
-  products: Product[];
+
+  //
+  // @OneToMany(
+  //   type => Product,
+  //   product => product.category,
+  //   { eager: true },
+  // )
+  // products: Product[];
 }

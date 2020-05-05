@@ -15,7 +15,7 @@ export class AuthorizationController {
   }
 
   @Post('/signin')
-  async singIp(
+  async singIn(
     @Body(ValidationPipe)
     authorizationCredentialsDto: AuthorizationCredentialsDto,
   ): Promise<{ accessToken: string }> {

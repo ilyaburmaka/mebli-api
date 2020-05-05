@@ -7,6 +7,7 @@ import { ProductModule } from './product/product.module';
 import { CategoryModule } from './category/category.module';
 import { FeedbackModule } from './feedback/feedback.module';
 import { SubcategoryModule } from './subcategory/subcategory.module';
+import { AssetsModule } from './assets/assets.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { SubcategoryModule } from './subcategory/subcategory.module';
     CategoryModule,
     FeedbackModule,
     SubcategoryModule,
+    AssetsModule,
   ],
 })
 export class AppModule {}

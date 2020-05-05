@@ -1,10 +1,11 @@
-import { IsNotEmpty } from 'class-validator';
-import { CategoryTypeEnum } from '../../category/category.type.enum';
+import { CategoryTypeEnum } from '../category.type.enum';
 
 export class CreateCategoryDto {
-  @IsNotEmpty()
   name: string;
 
-  @IsNotEmpty()
+  nameRu: string;
+
+  nameEn: string;
+
   type: CategoryTypeEnum;
 }

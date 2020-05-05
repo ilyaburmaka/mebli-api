@@ -20,10 +20,12 @@ export class SubRepository extends Repository<SubCategory> {
     subCategoryValues: CreateSubCategoryDto,
     category: Category,
   ) {
-    const { name } = subCategoryValues;
+    const { name, nameRu, nameEn } = subCategoryValues;
     const sub = new SubCategory();
 
     sub.name = name;
+    sub.nameRu = nameRu;
+    sub.nameEn = nameEn;
     sub.category = category;
 
     try {
@@ -39,7 +41,7 @@ export class SubRepository extends Repository<SubCategory> {
     category: Category,
     subCategory: SubCategory,
   ) {
-    const { name, categoryId } = subCategoryValues;
+    const { name, nameRu, nameEn, categoryId } = subCategoryValues;
 
     if (categoryId !== category.id) {
       subCategory.category = category;
@@ -47,6 +49,13 @@ export class SubRepository extends Repository<SubCategory> {
 
     if (subCategory.name !== name) {
       subCategory.name = name;
+    }
+    if (subCategory.nameRu !== nameRu) {
+      subCategory.nameRu = nameRu;
+    }
+
+    if (subCategory.nameEn !== nameEn) {
+      subCategory.nameEn = nameEn;
     }
 
     try {

@@ -11,7 +11,5 @@ export class AuthorizationCredentialsDto {
   username: string;
 
   @IsString()
-  @MinLength(6)
-  @MaxLength(40)
   password: string;
 }

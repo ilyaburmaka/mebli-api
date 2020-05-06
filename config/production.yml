@@ -7,7 +7,7 @@ db:
   host: 'ec2-52-6-143-153.compute-1.amazonaws.com'
   username: 'pqrjleukloehdl'
   password: '2715597aebaf39c5bf64872303c67c6d8833b745f5f721b8982ca5463c6880c3'
-  synchronize: false
+  synchronize: true
   database: 'd8dd5g7dhv5dpj'
 jwt:
   secret: 'pa11MebliJ'

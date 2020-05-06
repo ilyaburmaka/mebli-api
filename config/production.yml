@@ -1,5 +1,6 @@
 server:
   origin: 'https://fasad.now.sh'
+#  origin: 'https://fasad-api-mebli.s3.eu-west-3.amazonaws.com'
 db:
   type: 'postgres'
   port: 5432
@@ -8,6 +9,5 @@ db:
   password: 'aa763771e0eda98d95f196483d501cefea39e48d82067319a150bec042a8dd53'
   synchronize: false
   database: 'dd55kr879q9jdr'
-
 jwt:
   secret: 'pa11MebliJ'

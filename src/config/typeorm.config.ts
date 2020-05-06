@@ -10,6 +10,8 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   username: process.env.RDS_USERNAME || dbConfig.username,
   password: process.env.RDS_PASSWORD || dbConfig.password,
   database: process.env.RDS_DB_NAME || dbConfig.database,
+  url:
+    'postgres://pqrjleukloehdl:2715597aebaf39c5bf64872303c67c6d8833b745f5f721b8982ca5463c6880c3@ec2-52-6-143-153.compute-1.amazonaws.com:5432/d8dd5g7dhv5dpj',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   synchronize: process.env.TYPEORM_SYNC || dbConfig.synchronize,
 };

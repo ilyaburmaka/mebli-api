@@ -21,4 +21,5 @@ import { AssetsModule } from './assets/assets.module';
     AssetsModule,
   ],
 })
-export class AppModule {}
+export class AppModule {
+}

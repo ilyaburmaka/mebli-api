@@ -9,6 +9,8 @@ export class CreateSubCategoryDto {
 
   nameEn: string;
 
+  photoId: string;
+
   @IsNotEmpty()
   categoryId: number;
 }

@@ -40,7 +40,7 @@ export class AssetsController {
   @UseInterceptors(
     FileInterceptor('image', {
       storage: diskStorage({
-        destination: './assets',
+        destination: './files',
         filename: (req, file, cb) => {
           const randomName = Array(32)
             .fill(null)
@@ -52,7 +52,6 @@ export class AssetsController {
     }),
   )
   async uploadedFile(@UploadedFile() image) {
-    console.log('image', image);
     return this.assetsService.saveFile(image);
   }
 

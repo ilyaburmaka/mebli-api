@@ -5,9 +5,12 @@ import {
   Column,
   ManyToOne,
   ManyToMany,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { Category } from '../category/category.entity';
 import { Product } from '../product/product.entity';
+import { Asset } from '../assets/asset.entity';
 
 @Entity()
 export class SubCategory extends BaseEntity {
@@ -25,6 +28,13 @@ export class SubCategory extends BaseEntity {
 
   @Column({ nullable: true })
   categoryId: number;
+
+  @OneToOne(
+    type => Asset,
+    asset => asset.subcategory,
+  )
+  @JoinColumn()
+  photo: Asset;
 
   @ManyToOne(
     type => Category,

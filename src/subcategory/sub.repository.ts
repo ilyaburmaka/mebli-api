@@ -3,13 +3,18 @@ import { SubCategory } from './sub.entity';
 import { InternalServerErrorException } from '@nestjs/common';
 import { CreateSubCategoryDto } from './dto/create-subcategory.dto';
 import { Category } from '../category/category.entity';
+import { Asset } from '../assets/asset.entity';
 
 @EntityRepository(SubCategory)
 export class SubRepository extends Repository<SubCategory> {
   async geSubCategory() {
     const query = this.createQueryBuilder('subcategory');
     try {
-      const subs = await query.getMany();
+      const subs = await query
+        .leftJoinAndSelect('subcategory.photo', 'photo')
+        .leftJoinAndSelect('subcategory.category', 'category')
+        .getMany();
+
       return subs;
     } catch (error) {
       throw new InternalServerErrorException();
@@ -19,6 +24,7 @@ export class SubRepository extends Repository<SubCategory> {
   async createSubCategory(
     subCategoryValues: CreateSubCategoryDto,
     category: Category,
+    photo: Asset,
   ) {
     const { name, nameRu, nameEn } = subCategoryValues;
     const sub = new SubCategory();
@@ -27,6 +33,7 @@ export class SubRepository extends Repository<SubCategory> {
     sub.nameRu = nameRu;
     sub.nameEn = nameEn;
     sub.category = category;
+    sub.photo = photo;
 
     try {
       await sub.save();

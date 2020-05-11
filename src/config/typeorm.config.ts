@@ -23,3 +23,22 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
   synchronize: process.env.TYPEORM_SYNC || dbConfig.synchronize,
 };
+//
+// const dbConfig = config.get('db');
+//
+// export const typeOrmConfig: TypeOrmModuleOptions = {
+//   type: dbConfig.type,
+//   host: 'localhost',
+//   port: 5432,
+//   username: 'postgres',
+//   password: 'postgres',
+//   database: 'postgres',
+//   migrationsRun: true,
+//   migrations: [__dirname + 'src/db/migrations/**/*{.ts,.js}'],
+//   cli: {
+//     migrationsDir: 'src/db/migrations',
+//   },
+//   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+//   synchronize: process.env.TYPEORM_SYNC || dbConfig.synchronize,
+// };
+//

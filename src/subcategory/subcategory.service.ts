@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { SubRepository } from './sub.repository';
 import { CreateSubCategoryDto } from './dto/create-subcategory.dto';
 import { CategoryRepository } from '../category/category.repository';
+import { AssetsRepository } from '../assets/assets.repository';
 
 @Injectable()
 export class SubcategoryService {
@@ -11,6 +12,8 @@ export class SubcategoryService {
     private readonly subRepository: SubRepository,
     @InjectRepository(CategoryRepository)
     private readonly categoryRepository: CategoryRepository,
+    @InjectRepository(AssetsRepository)
+    private readonly assetsRepository: AssetsRepository,
   ) {}
 
   async geSubCategory() {
@@ -33,15 +36,26 @@ export class SubcategoryService {
     const category = await this.categoryRepository.findOne(
       subCategoryValues.categoryId,
     );
+    const photo = await this.assetsRepository.findOne(
+      subCategoryValues.photoId,
+    );
+
     if (!category) {
       throw new NotFoundException(
         `Category with ID ${subCategoryValues.categoryId} not found`,
       );
     }
 
+    if (!photo) {
+      throw new NotFoundException(
+        `Photo with ID ${subCategoryValues.photoId} not found`,
+      );
+    }
+
     return await this.subRepository.createSubCategory(
       subCategoryValues,
       category,
+      photo
     );
   }
 

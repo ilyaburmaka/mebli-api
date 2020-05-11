@@ -9,7 +9,7 @@ import { AssetsRepository } from './assets.repository';
 @Module({
   imports: [
     MulterModule.register({
-      dest: './assets',
+      dest: './files',
     }),
     TypeOrmModule.forFeature([AssetsRepository]),
     AuthorizationModule,
